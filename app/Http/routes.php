@@ -17,13 +17,40 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::resource('fields', 'FieldController');
     Route::resource('menus', 'MenuController');
     Route::resource('links', 'LinkController');
-    Route::resource('users', 'UserController');
 
     //personales
 	Route::post('pages/duplicate', ['as' => 'admin.pages.duplicate', 'uses' => 'PageController@duplicate']);
 });
 
-Route::get('/', 'WebController@index');
+Route::group(['middleware' => 'auth'], function () {
+
+    Route::resource('events', 'EventController');
+    Route::resource('posts', 'PostController');
+    Route::resource('comments', 'CommentController');
+    Route::resource('users', 'UserController');
+
+	Route::get('/', 'WebController@index');
+	//mis rutas
+	Route::get('c/{category}/{slug}', 'WebController@page')->where('category', '[a-z,0-9-]+')->where('slug', '[a-z,0-9-]+');
+	Route::get('c/{slug}', 'WebController@category')->where('slug', '[a-z,0-9-]+');
+	Route::match(['get', 'post'], 'contact', 'WebController@contact');
+    Route::get('events/{id}/vote/{rank}', ['as' => 'event.vote', 'uses' => 'EventController@vote']);
+
+    Route::get('photos/{filename}', function ($filename)
+    {
+        $path = storage_path() . '/app/' . $filename;
+
+        if(!File::exists($path)) abort(404);
+
+        $file = File::get($path);
+        $type = File::mimeType($path);
+
+        $response = Response::make($file, 200);
+        $response->header("Content-Type", $type);
+
+        return $response;
+    });
+});
 
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
@@ -34,7 +61,4 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
-//mis rutas
-Route::get('c/{category}/{slug}', 'WebController@page')->where('category', '[a-z,0-9-]+')->where('slug', '[a-z,0-9-]+');
-Route::get('c/{slug}', 'WebController@category')->where('slug', '[a-z,0-9-]+');
-Route::match(['get', 'post'], 'contact', 'WebController@contact');
+

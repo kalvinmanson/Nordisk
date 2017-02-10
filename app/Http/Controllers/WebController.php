@@ -21,7 +21,8 @@ class WebController extends Controller
     //home
     public function index()
     {
-        return view('web/index');
+        $posts = Page::where('category_id', 1)->orderBy('created_at', 'desc')->paginate(6);
+        return view('web/index', compact('posts'));
     }
      //Show category
     public function category($slug)

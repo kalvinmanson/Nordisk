@@ -1,9 +1,14 @@
-$color1: #1C1D21;
-$color2: #31353D;
-$color3: #445878;
-$color4: #92CDCF;
-$color5: #EEEFF7;
+@import url('https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900');
 
+$color1: #ffffff;
+$color2: #0CA3DD;
+$color3: #C41D69;
+$color4: #24356F;
+$color5: #F68A20;
+$color6: #1AAD4A;
+$color7: #203C74;
+$color8: #8BC540;
+$color9: #F2F2F2;
 /* MIXINS */
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -36,6 +41,7 @@ $screen-sm-max: ($screen-md-min - 1);
 $screen-lg-min: 1200px;
 $screen-md-max: ($screen-lg-min - 1);
 
+
 /*
 @media (max-width: $screen-xs-max) { ... }
 @media (min-width: $screen-sm-min) { ... }
@@ -47,57 +53,199 @@ $screen-md-max: ($screen-lg-min - 1);
 html, body {
 	height: 100%;
 }
-a { color: $color3; }
+h1, h2, h3, h4, h5 {
+	font-family: 'Maven Pro', sans-serif;
+}
+a { color: $color4; }
 a:hover { text-decoration: none; }
-.ttable {
+.bgcolor2 { background-color: $color2; }
+.bgcolor3 { background-color: $color3; }
+.bgcolor4 { background-color: $color4; }
+.bgcolor5 { background-color: $color5; }
+.bgcolor8 { background-color: $color8; }
+
+.wrap {
 	display: table;
-	width: 100%;
 	height: 100%;
+	width: 100%;
 }
-.theader {
-	display: table-row;
-	height: 40px;
-}
-.ttable .ttd {
+.col-home {
 	display: table-cell;
-	vertical-align:top;
-}
-.ttable .sidebar {
 	background-color: $color2;
-	
-	@media (max-width: $screen-xs-max) {
-		display: none;
-	}
-	@media (min-width: $screen-sm-min) {
-		width: 70px;
-	}
-	@media (min-width: $screen-md-min) {
-		width: 200px;
-	}
+	width: 60%;
+	vertical-align: middle;
+	text-align: center;
 }
-.ttable .content {
-	background-color: $color5;
+.img-responsive {
+	margin: auto;
 }
-.paddcontent {
+.col-login {
+	display: table-cell;
+	width: 40%;
+}
+.col-login .loginbox {
+	background-color: $color7;
+	color: $color1;
+	background-image: url(/img/bgwave02.jpg);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	padding-bottom: 50px;
+	padding-top: 50px;
+}
+.col-login .loginbox h1 {
+	text-align: center;
+	font-weight: 700;
+	font-size: 20px;
+}
+.col-login .loginbox h1 span {
+	font-weight: lighter;
 	display: block;
+}
+.col-login .loginform {
+	text-align: center;
+	padding: 10%;
+}
+.col-login .loginform label {
+	font-size: 20px;
+}
+.col-login .logininfo {
+	text-align: center;
+	color: $color2;
+}
+.col-login .logininfo h3 {
+	text-align: center;
+	display: block;
+	padding: 30px 20%;
+	margin: 0;
+	color: $color2;
+}
+.col-login .logininfo h3 span {
+	font-weight: 700;
+	font-size:50px;
+}
+/* home */
+.column {
+	display: table-cell;
+	width: 50%;
+	vertical-align: top;
+}
+.column .container-fluid {
+	position: relative;
+}
+.incolumn {
+	height: 100%;
+	overflow: auto;
+}
+.menuprin {
+	display: table;
+	height: 100%;
+	width: 100%;
+}
+.menuprin .rowtable {
+	display: table-row;
+	height: 50%;
+}
+.menuprin .rowtable a {
+	display: table-cell;
+	width: 50%;
+	text-align: center;
+	vertical-align: middle;
+	color: $color1;
+	font-size: 30px;
+	@include transition(0.5s);
+}
+.menuprin .rowtable a:hover {
+	opacity: 0.7;
+}
+.menuprin .rowtable a i {
+	display: block;
+	font-size: 60px;
+}
+.menuprin .rowtable a.btn-01 { background-color: $color2; }
+.menuprin .rowtable a.btn-02 { background-color: $color3; }
+.menuprin .rowtable a.btn-03 { background-color: $color4; }
+.menuprin .rowtable a.btn-04 { background-color: $color5; }
+/* HEADER */
+.headcont {
+	display: block;
+	text-align: center;
+	padding: 15px 0;
+}
+.headcont .img-responsive {
+	margin: auto;
+	max-width: 100px;
+}
+.headcont .bigicon {
+	font-size: 25px;
+}
+.headcont .bigicon.chat {
+	color: $color6;
+}
+/* HOME */
+.home .bgwave {
+	background-color: $color4;
+	background-image: url(/img/bgwave01.jpg);
+	background-position: top;
+	background-repeat: repeat-x;
+	padding: 50px 15px 15px 15px;
+	margin-bottom: 20px;
+}
+.home .bgwave h1 {
+	color: $color1;
+	text-align: center;
+	font-weight: 700;
+	font-size: 20px;
+}
+.home .bgwave h1 span {
+	font-weight: lighter;
+	display: block;
+}
+.post {
+	display: block;
+	border-bottom: 1px dashed $color8;
 	padding: 15px;
 }
-/*menu prin*/
-.sidebar ul {
-	display: block;
-	list-style: none;
-	margin: 0;
-	padding: 0;
+.post:nth-child(odd) {
+	background-color: $color1;;  
 }
-.sidebar ul li a {
-	display:block;
-	padding: 7px 10px;
+.post:nth-child(even) {
+	background-color: $color9;
+}
+.post h3 {
+	font-weight: 700;
 	color: $color4;
-	background-color: $color2;
-	border-bottom: 1px dashed $color1;
-	@include transition();
 }
-.sidebar ul li a:hover {
-	color: $color2;
-	background-color: $color5;
+/*CONTENT*/
+.inheader {
+	display: block;
+	margin: 0 15px 15px 15px;
+	text-align: center;
+	color: $color1;
+	padding: 15px;
+}
+.inheader h1 {
+	margin: 0;
+}
+.event {
+	background-size: cover;
+	color: $color1;
+	margin-bottom: 15px;
+}
+.event h3 {
+	margin: 0;
+	color: $color1;
+	text-shadow: 2px 3px 3px #000000;
+}
+.event .caption {
+	padding: 100px 20px 20px 20px;
+	background: -moz-linear-gradient(top, rgba(0,0,0,0) 0%, rgba(0,0,0,0.71) 86%, rgba(0,0,0,0.71) 100%);
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0) 0%,rgba(0,0,0,0.71) 86%,rgba(0,0,0,0.71) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0) 0%,rgba(0,0,0,0.71) 86%,rgba(0,0,0,0.71) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#b5000000',GradientType=0 );
+}
+.event .countdown {
+	display: block;
+	float: right;
+	background-color: $color2;
+	padding: 10px;
 }

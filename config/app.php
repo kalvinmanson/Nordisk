@@ -147,6 +147,7 @@ return [
         Laracasts\Flash\FlashServiceProvider::class,
         GrahamCampbell\HTMLMin\HTMLMinServiceProvider::class,
         Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
+        Intervention\Image\ImageServiceProvider::class,
 
     ],
 
@@ -198,6 +199,7 @@ return [
         'Form'      => Collective\Html\FormFacade::class,
         'Html'      => Collective\Html\HtmlFacade::class,
         'HTMLMin'   => GrahamCampbell\HTMLMin\Facades\HTMLMin::class,
+        'Image'     => Intervention\Image\Facades\Image::class,
 
     ],
 

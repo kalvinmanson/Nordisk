@@ -17,7 +17,7 @@
         <li><a href="{{ url('admin/pages') }}">Pages</a></li>
 		<li><a href="{{ url('admin/categories') }}">Cetegories</a></li>
 		<li><a href="{{ url('admin/menus') }}">Menús</a></li>
-		<li><a href="{{ url('admin/users') }}">Users</a></li>
+		<li><a href="{{ url('users') }}">Users</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ url('auth/logout') }}">Logout</a></li>
