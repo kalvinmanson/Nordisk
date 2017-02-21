@@ -18,6 +18,8 @@ class CreateEventsTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->string('name');
             $table->string('picture');
+            $table->string('place');
+            $table->string('team');
             $table->dateTime('startdate');
             $table->dateTime('enddate');
             $table->text('content');

@@ -1,0 +1,35 @@
+hora home, **
+video home **
+fuente montserrat **
+header no home **
+
+
+-----
+Administrador chats **
+responsive moments **
+likes comments moments **
+agregar dias **
+quitar el rank **
+
+
+-------
+modificar css chat **
+css titles **
+cambio mapa **
+
+
+----
+responsive scroll **
+menu administrador **
+listar eventos **
+rotar imagen
+usuario suplantar email **
+cambiar fechas eventos **
+eventos ics
+icono ***
+
+Descargar Evento y Dia
+responsive map***
+icono chat (push notification)
+change password **
+no change name **

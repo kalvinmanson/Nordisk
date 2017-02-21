@@ -6,6 +6,7 @@ use Auth;
 use Storage;
 use File;
 use Image;
+use Hash;
 use Illuminate\Http\Request;
 use App\User;
 use App\Http\Requests;
@@ -36,10 +37,6 @@ class UserController extends Controller
         $current_user = Auth::user();
         $user = User::find($id);
 
-        $this->validate(request(), [
-            'name' => ['required', 'max:100']
-        ]);
-
         // subir imagen
         if ($request->hasFile('picture') && $request->file('picture')->isValid()) {
             
@@ -55,9 +52,24 @@ class UserController extends Controller
 
             $user->avatar = $filename;
         }
+        // Cambiar password
+        if (isset($request->old_password) && Hash::check($request->old_password, $user->password)) {
+            $this->validate(request(), [
+                'old_password' => 'required|min:6',
+                'password' => 'required|min:3|confirmed',
+                'password_confirmation' => 'required|min:3'
+            ]);
+            $user->fill([
+                'password' => Hash::make($request->password)
+            ])->save();
+            flash('Contraseña actualizada', 'success');
+            return redirect()->action('UserController@show', $user->id);
+        }
+
         $record_store = $request->all();
         $user->fill($record_store)->save();
-        return redirect()->action('UserController@index');
+        flash('Perfil actualizado', 'success');
+        return redirect()->action('UserController@show', $user->id);
     }
 
     /**

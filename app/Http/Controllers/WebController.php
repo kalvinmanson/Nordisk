@@ -22,9 +22,14 @@ class WebController extends Controller
     public function index()
     {
         $posts = Page::where('category_id', 1)->orderBy('created_at', 'desc')->paginate(6);
-        return view('web/index', compact('posts'));
+        $videos = Page::where('category_id', 3)->orderBy('created_at', 'desc')->paginate(1);
+        return view('web/index', compact('posts', 'videos'));
     }
-     //Show category
+    //Show Map
+    public function map() {
+        return view('web/map');     
+    }
+    //Show category
     public function category($slug)
     {
         $country = $this->country();

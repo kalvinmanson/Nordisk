@@ -5,14 +5,6 @@
 <h1>Edit Event</h1>
 		<form method="POST" action="{{ url('/events/' . $event->id) }}" enctype="multipart/form-data">			
 			<div class="form-group">
-				<label for="user_id">Ponente</label>
-				<select name="user_id" id="user_id" class="form-control">
-					@foreach ($users as $user)
-					<option value="{{ $user->id }}" {{ $user->id == $event->user_id ? 'selected' : '' }}>{{ $user->name }}</option>
-					@endforeach
-				</select>
-			</div>
-			<div class="form-group">
 				<label for="name">Nombre</label>
 				<input name="name" type="text" class="form-control input-lg" value="{{ old('name') ? old('name') : $event->name }}">	
 			</div>
@@ -20,6 +12,20 @@
 				<label for="avatar">Picture</label>
 				<input type="file" name="avatar" id="avatar" class="form-control" accept="image/*" capture>
 				{{ $event->picture ? $event->picture : "no file" }}
+			</div>
+			<div class="row">
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="place">Lugar</label>
+						<input name="place" id="place" type="text" class="form-control" value="{{ old('place') ? old('place') : $event->place }}">
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="form-group">
+						<label for="team">Grupo</label>
+						<input name="team" id="team" type="text" class="form-control" value="{{ old('team') ? old('team') : $event->team }}">
+					</div>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-6">
@@ -35,7 +41,6 @@
 					</div>
 				</div>
 			</div>
-			
 			
 			<div class="form-group">
 				<label for="content">Content</label>

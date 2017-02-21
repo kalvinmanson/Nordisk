@@ -12,11 +12,11 @@
 		Hora: {{  Carbon\Carbon::parse($event->startdate)->format('H:i') }}
 	</div>
 	{!! nl2br($event->content) !!}
-	<div class="rank">
+	<?php /*<div class="rank">
 		<h1 id="rank_number">{{ $event->rank }}</h1>
 		<input type="hidden" id="event_id" value="{{ $event->id }}">
 		<div id="ratings" data-rating="{{ $event->rank }}"></div>
-	</div>
+	</div>*/ ?>
 	@if (Auth::check() && Auth::user()->rol == 'Admin')
 		<hr>
 		<a href="/events/{{ $event->id }}/edit" class="btn btn-default">Editar</a>

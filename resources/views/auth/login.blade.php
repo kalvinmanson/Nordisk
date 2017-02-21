@@ -6,8 +6,8 @@
     <div class="container-fluid">
         <h1>EMPODERAMIENTO, SIMPLICIDAD Y AGILIDAD
             <span>SON EL IMPULSO QUE NOS LLEVARÁ A</span>
-        SUPERAR LA COMPETENCIA.</h1>
-        <form method="POST" action="/auth/login" class="loginform">
+        <span class="big">SUPERAR LA COMPETENCIA.</span></h1>
+        <form method="POST" action="/auth/login" class="loginform" autocomplete="off">
             {!! csrf_field() !!}
 
             <h2>BIENVENIDO</h2>
@@ -15,12 +15,12 @@
             @include('flash::message')
             @include('partials.errors')
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" value="{{ old('email') }}" class="form-control">
+                <label for="username">Usuario</label>
+                <input type="text" name="username" value="{{ old('username') }}" class="form-control">
             </div>
 
             <div class="form-group">
-                <label for="password">Password</label>
+                <label for="password">Contraseña</label>
                 <input type="password" name="password" id="password" class="form-control">
             </div>
 
@@ -40,7 +40,7 @@
     <div class="container-fluid">
         <h3>
             CONVENCIÓN INTERNACIONAL PUERTO VALLARTA - MÉXICO<br /><br />
-            <span>22 &bull; 02 &bull; 17</span>
+            <span>2017</span>
         </h3>
         <img src="/img/brand.png" class="img-responsive">
     </div>

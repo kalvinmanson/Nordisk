@@ -1,14 +1,17 @@
-@import url('https://fonts.googleapis.com/css?family=Maven+Pro:400,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 $color1: #ffffff;
-$color2: #0CA3DD;
-$color3: #C41D69;
-$color4: #24356F;
-$color5: #F68A20;
+$color2: #00A5DE;
+$color3: #E7347C;
+$color4: #003877;
+$color5: #F5821F;
 $color6: #1AAD4A;
 $color7: #203C74;
-$color8: #8BC540;
+$color8: #C1D72E;
 $color9: #F2F2F2;
+$color10: #00B190;
+$color11: #6C0633;
+
 /* MIXINS */
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -34,6 +37,20 @@ $color9: #F2F2F2;
 	   -moz-transition: all $speed ease;
 	     -o-transition: all $speed ease;
 }
+
+@mixin saltos() {
+		overflow-wrap: break-word;
+		    word-wrap: break-word;
+		-ms-word-break: break-all;
+		    word-break: break-all;
+		   word-break: break-word;
+
+		  	    -ms-hyphens: auto;
+	    	   -moz-hyphens: auto;
+			-webkit-hyphens: auto;
+					hyphens: auto;
+
+}
 $screen-sm-min: 768px;
 $screen-xs-max: ($screen-sm-min - 1);
 $screen-md-min: 992px;
@@ -54,7 +71,10 @@ html, body {
 	height: 100%;
 }
 h1, h2, h3, h4, h5 {
-	font-family: 'Maven Pro', sans-serif;
+	font-family: 'Montserrat', sans-serif;
+}
+* {
+	font-family: 'Montserrat', sans-serif;
 }
 a { color: $color4; }
 a:hover { text-decoration: none; }
@@ -62,12 +82,59 @@ a:hover { text-decoration: none; }
 .bgcolor3 { background-color: $color3; }
 .bgcolor4 { background-color: $color4; }
 .bgcolor5 { background-color: $color5; }
+.bgcolor6 { background-color: $color6; }
+.bgcolor7 { background-color: $color7; }
 .bgcolor8 { background-color: $color8; }
+.bgcolor9 { background-color: $color9; }
+.bgcolor10 { background-color: $color10; }
+.bgcolor11 { background-color: $color11; }
 
+.centerlinks li a {
+	text-align: center;
+	border-bottom: 1px dashed $color1;
+	background-color: $color7;
+	color: $color1 !important;
+}
+.centerlinks li .btn-01 {
+	background-color: $color2;
+}
+.centerlinks li .btn-02 {
+	background-color: $color3;
+}
+.centerlinks li .btn-03 {
+	background-color: $color4;
+}
+.centerlinks li .btn-04 {
+	background-color: $color5;
+}
+.centerlinks li .btn-05 {
+	background-color: $color10;
+}
+.centerlinks li .btn-06 {
+	background-color: $color8;
+}
+.centerlinks li .btn-07 {
+	background-color: $color11;
+}
+.dropwhite li a {
+	color: $color1;
+}
+.dropwhite li .btn-05 {
+	background-color: $color10;
+}
+.dropwhite li .btn-06 {
+	background-color: $color8;
+}
+.dropwhite li .btn-07 {
+	background-color: $color11;
+}
 .wrap {
 	display: table;
 	height: 100%;
 	width: 100%;
+	@media (max-width: $screen-sm-max) {
+		height: auto;
+	}
 }
 .col-home {
 	display: table-cell;
@@ -75,6 +142,9 @@ a:hover { text-decoration: none; }
 	width: 60%;
 	vertical-align: middle;
 	text-align: center;
+	@media (max-width: $screen-sm-max) {
+		display: none;
+	}
 }
 .img-responsive {
 	margin: auto;
@@ -84,7 +154,6 @@ a:hover { text-decoration: none; }
 	width: 40%;
 }
 .col-login .loginbox {
-	background-color: $color7;
 	color: $color1;
 	background-image: url(/img/bgwave02.jpg);
 	background-position: bottom;
@@ -96,10 +165,20 @@ a:hover { text-decoration: none; }
 	text-align: center;
 	font-weight: 700;
 	font-size: 20px;
+	@media (max-width: $screen-sm-max) {
+		font-size: 12px;
+	}
 }
 .col-login .loginbox h1 span {
 	font-weight: lighter;
 	display: block;
+}
+.col-login .loginbox h1 .big {
+	font-weight: 700;
+	font-size: 30px;
+	@media (max-width: $screen-sm-max) {
+		font-size: 17px;
+	}
 }
 .col-login .loginform {
 	text-align: center;
@@ -118,10 +197,17 @@ a:hover { text-decoration: none; }
 	padding: 30px 20%;
 	margin: 0;
 	color: $color2;
+	@media (max-width: $screen-sm-max) {
+		padding: 30px 15px;
+		font-size: 20px;
+	}
 }
 .col-login .logininfo h3 span {
 	font-weight: 700;
 	font-size:50px;
+	@media (max-width: $screen-sm-max) {
+		font-size:30px;
+	}
 }
 /* home */
 .column {
@@ -129,12 +215,21 @@ a:hover { text-decoration: none; }
 	width: 50%;
 	vertical-align: top;
 }
+.column.col1 {
+	@media (max-width: $screen-sm-max) {
+		display: none;
+	}
+}
 .column .container-fluid {
 	position: relative;
 }
 .incolumn {
 	height: 100%;
 	overflow: auto;
+	padding-bottom: 70px;
+	@media (max-width: $screen-sm-max) {
+		overflow: none;
+	}
 }
 .menuprin {
 	display: table;
@@ -183,9 +278,9 @@ a:hover { text-decoration: none; }
 }
 /* HOME */
 .home .bgwave {
-	background-color: $color4;
+	margin-top: 15px;
 	background-image: url(/img/bgwave01.jpg);
-	background-position: top;
+	background-position: 0 0;
 	background-repeat: repeat-x;
 	padding: 50px 15px 15px 15px;
 	margin-bottom: 20px;
@@ -195,21 +290,67 @@ a:hover { text-decoration: none; }
 	text-align: center;
 	font-weight: 700;
 	font-size: 20px;
+	@media (max-width: $screen-sm-max) {
+		font-size: 15px;
+		margin: 0;
+	}
 }
 .home .bgwave h1 span {
 	font-weight: lighter;
 	display: block;
 }
+.home .bgwave h1 .big {
+	font-size: 30px;
+	font-weight: 700;
+	@media (max-width: $screen-sm-max) {
+		font-size: 15px;
+	}
+}
 .post {
 	display: block;
 	border-bottom: 1px dashed $color8;
-	padding: 15px;
+	padding: 20px;
+	@media (max-width: $screen-sm-max) {
+		padding: 0 0 15px 0;
+	}
 }
 .post:nth-child(odd) {
 	background-color: $color1;;  
 }
 .post:nth-child(even) {
 	background-color: $color9;
+}
+.post .minipic {
+	display: block;
+	width: 50px;
+	@include border-radius(50px);
+	float: left;
+	margin: 0 15px 15px 0;
+}
+.post blockquote {
+	display:block;
+	background: #fff;
+	margin: 0;
+	padding: 30px 30px 30px 50px;
+	position: relative;
+	font-family: Georgia, serif;
+	font-size: 20px;
+	line-height: 1.2;
+	color: #666;
+	text-align: justify;
+	border-left: 15px solid $color3;
+	border-right: 5px solid $color4;
+	-moz-box-shadow: 2px 2px 15px #ccc;
+	-webkit-box-shadow: 2px 2px 15px #ccc;
+	box-shadow: 2px 2px 15px #ccc;
+	@include saltos();
+	@media (max-width: $screen-sm-max) {
+		padding: 5px;
+		font-size: 15px;
+	}
+}
+.post blockquote.bordeverde {
+	border-left: 15px solid $color8;
 }
 .post h3 {
 	font-weight: 700;
@@ -222,9 +363,16 @@ a:hover { text-decoration: none; }
 	text-align: center;
 	color: $color1;
 	padding: 15px;
+	@media (max-width: $screen-sm-max) {
+		padding: 7px;
+		margin: 0;
+	}
 }
 .inheader h1 {
 	margin: 0;
+	@media (max-width: $screen-sm-max) {
+		font-size: 20px;
+	}
 }
 .event {
 	background-size: cover;
@@ -247,5 +395,331 @@ a:hover { text-decoration: none; }
 	display: block;
 	float: right;
 	background-color: $color2;
+	padding: 10px;
+}
+.userdetails {
+	display: block;
+	border-bottom: 4px solid $color4;
+	padding: 15px;
+}
+.userdetails h1 {
+	display: block;
+	overflow: hidden;
+	font-size: 30px;
+	margin: 15px 0 5px 0;
+	color: $color4;
+	@media (max-width: $screen-sm-max) {
+		font-size: 20px;
+		text-align: center;
+	}
+}
+.userdetails .well {
+	color: $color10;
+}
+.userdetails h2 {
+	display: block;
+	overflow: hidden;
+	font-size: 20px;
+	color: $color10;
+	margin: 0 0 15px 0;
+	@media (max-width: $screen-sm-max) {
+		font-size: 12px;
+		text-align: center;
+	}
+}
+.chat {
+	display: block;
+	padding: 5px 15px;
+	margin: 3px 5px;
+	@include border-radius(8px);
+	background-color: rgba($color8, 0.2);
+	float: right;
+	clear: both;
+}
+.chat.Admin {
+	background-color: rgba($color4, 0.2);
+	float: left;
+	text-align: left;
+}
+.chat .avatar {
+	display: block;
+	float: left;
+	width: 40px;
+	margin: 0 15px 15px 0;
+	@include border-radius(50px);
+}
+.chatbox {
+	display: block;
+	width: 100%;
+	height: 500px;
+	overflow-y: scroll;
+}
+.chatbox p {
+	display: block;
+	position: relative;
+	background-color: $color4;
+	color: $color1;
+	padding: 15px;
+	margin: 0 0 2px 60px;
+}
+.chatbox p:before {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 0;
+  border: 15px solid;
+  border-color:  transparent $color4 $color4 transparent;
+}
+.chatbox p span {
+	display: block;
+	font-size:10px;
+	font-weight: lighter;
+}
+.chat_form {
+	@media (max-width: $screen-sm-max) {
+		position: fixed;
+		bottom: 0;
+	}
+}
+.hotelmap {
+	background-image: url(/img/map.jpg);
+	background-size: cover;
+	background-position: center top;
+	display: table;
+	width: 100%;
+	padding: 20% 0 15px 0;
+}
+.hotelmap .fila {
+	display: table-row;
+}
+.hotelmap .fila .celda {
+	display: table-cell;
+	vertical-align: middle;
+}
+.hotelmap.pv {
+	background-image: url(/img/mappv.jpg);
+}
+.welcome {
+	padding: 0 15%;
+}
+.iconblock {
+	display: table;
+	width: 100%;
+}
+.iconblock a {
+	display: table-cell;
+	padding: 15px;
+}
+.minimap {
+	max-width: 700px;
+}
+.minimap .heading {
+	background-color: $color5;
+	color: $color1;
+	padding: 15px;
+	margin-bottom: 15px;
+}
+.minimap .heading .miniicon {
+	float: left;
+	margin: 0 15px 10px 0;
+}
+.minimap .heading h3 {
+	margin: 0;
+}
+.minimap h4 {
+	color: $color5;
+}
+.minimap ul {
+	list-style: none;
+	@include grid-colums(2, 15px);
+	@media (max-width: $screen-sm-max) {
+		@include grid-colums(1, 0);
+	}
+}
+.minimap ol {
+	display: block;
+	padding: 15px;
+	@include grid-colums(2, 15px);
+	@media (max-width: $screen-sm-max) {
+		@include grid-colums(1, 0);
+	}
+}
+.minimap ol.places1 {
+
+}
+.minimap2 {
+	max-width: 400px;
+}
+.alerta {
+
+}
+.alerta h1 {
+	color: $color4;
+	font-size: 30px;
+	text-align: center;
+	margin: 0;
+	padding: 15px 5px;
+}
+.alerta h2 {
+	color: $color4;
+	font-size: 20px;
+	text-align: center;
+	margin: 0;
+	padding: 15px 5px;
+}
+.alerta .countdown {
+	display: inline-block;
+	padding: 10px 40px;
+	font-size: 20px;
+	text-align: center;
+	color: $color4;
+	border: 3px solid $color4;
+	@include border-radius(10px);
+	margin-bottom: 30px;
+}
+.alerta .countdown span {
+	display: block;
+	font-size: 40px;
+	color: $color2;
+}
+
+
+/*EXTRAS*/
+/*COOL LIST*/
+.rounded-list {
+	margin: 0;
+	padding: 20px;
+}
+.rounded-list li {
+    position: relative;
+    display: block;
+    padding: .4em .4em .4em 2em;
+    *padding: .4em;
+    margin: .5em 0;
+    background: #ddd;
+    color: #444;
+    text-decoration: none;
+    border-radius: .3em;
+    transition: all .3s ease-out;
+}
+
+.rounded-list li:hover{
+    background: #eee;
+}
+
+.rounded-list li:hover:before{
+    transform: rotate(360deg);
+}
+
+.rounded-list li:before{
+    content:' ';
+    position: absolute;
+    left: -1.3em;
+    top: 50%;
+    margin-top: -1.3em;
+    background: #87ceeb;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    border: .3em solid #fff;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 2em;
+    transition: all .3s ease-out;
+}
+.btn-space {
+	margin-left: 15px;
+	margin-bottom: 15px;
+}
+.comments {
+	display: block;
+	clear: both;
+	font-size:12px;
+}
+.comments .comments-heading {
+	background-color: $color9;
+	color: $color3;
+	padding: 15px;
+}
+.comments .commentlist {
+	padding: 0 0 0 15px;
+	max-height: 200px;
+	overflow: hidden;
+}
+.comments .commentlist .comment {
+	padding: 15px;
+	border-bottom: 1px dashed $color4;
+}
+.comments .commentlist .comment:nth-child(odd) {
+	background-color: $color1;
+}
+.comments .commentlist .comment:nth-child(even) {
+	background-color: $color9;
+}
+.comments .btnesconde {
+	display: none;
+}
+.comments.verbtn .btnesconde {
+	display: block;
+}
+.autoh {
+	max-height: none !important;
+	height: auto;
+}
+.usernamebig {
+	font-size: 15px;
+	padding: 0 30px 0 0;
+	display: inline-block;
+}
+.username {
+	font-size: 15px;
+	padding: 15px 0 0 0;
+	display: block;
+	position: absolute;
+	text-align: center;
+	width: 100%;
+	color: $color4;
+}
+.file-lavel {
+	max-width: 150px;
+	overflow: hidden;
+}
+
+/* rounded ol */
+.ruedita {
+	display: block;
+	background-color: $color1;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: block;
+}
+.ruedita li {
+	display: block;
+	background-color: $color1;
+	padding: 15px;
+	border-bottom: 1px dashed $color8;
+	clear: both;
+}
+.ruedita li img {
+	display: block;
+	float: left; 
+	margin: 0 10px 10px 0;
+}
+.ruedita li .circle {
+	font-weight: bold;
+	color: $color4;
+}
+.vinculosmap {
+	display: block;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+.vinculosmap li {
+	display: inline-block;
+	width:24%;
 	padding: 10px;
 }

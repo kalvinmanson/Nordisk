@@ -6,6 +6,7 @@ use Auth;
 use Storage;
 use File;
 use Image;
+use Carbon;
 use Illuminate\Http\Request;
 use App\Event;
 use App\User;
@@ -15,6 +16,11 @@ use App\Http\Controllers\Controller;
 
 class EventController extends Controller
 {
+    public function next($now) {
+
+        $event = Event::where('startdate', '<', $now)->where('enddate', '>', $now)->orderBy('startdate', 'asc')->first();
+        return view('events.next', compact('event'));
+    }
     public function vote($id, $rank) {
         $current_user = Auth::user();
         $event = Event::find($id);
@@ -49,14 +55,18 @@ class EventController extends Controller
      */
     public function index(Request $request)
     {
-        if(isset($request->q)) {
-            $events = Event::where('name', 'LIKE', '%'.$request->q.'%')->orWhere('content', 'LIKE', '%'.$request->q.'%')->orderBy('startdate', 'asc')->paginate(100);
-        } else {
-            $events = Event::orderBy('startdate', 'asc')->paginate(50);
-        }
+
+        $eventsfeb22 = Event::where('startdate', 'LIKE', '2017-02-22%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb23 = Event::where('startdate', 'LIKE', '2017-02-23%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb24 = Event::where('startdate', 'LIKE', '2017-02-24%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb25 = Event::where('startdate', 'LIKE', '2017-05-22%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb26 = Event::where('startdate', 'LIKE', '2017-06-22%')->orderBy('startdate', 'asc')->get();
+
+
+        $all = Event::orderBy('startdate', 'asc')->paginate(10);
         //listado de ponentes
         $users = User::where('rol', 'Admin')->get();
-        return view('events/index', compact('events', 'users'));
+        return view('events/index', compact('users', 'eventsfeb22', 'eventsfeb23', 'eventsfeb24', 'eventsfeb25', 'eventsfeb26', 'all'));
     }
 
     public function store(Request $request)
@@ -108,7 +118,7 @@ class EventController extends Controller
 
             //redimencionar imagem
             $img = Image::make($request->file('avatar')->getRealPath());
-            $img->fit(1200, 450);
+            $img->widen(900);
             Storage::disk('local')->put($filename,  $img->stream());
             
 

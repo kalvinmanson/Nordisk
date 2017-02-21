@@ -28,13 +28,19 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('posts', 'PostController');
     Route::resource('comments', 'CommentController');
     Route::resource('users', 'UserController');
-
+    Route::resource('chats', 'ChatController');
+    
 	Route::get('/', 'WebController@index');
 	//mis rutas
 	Route::get('c/{category}/{slug}', 'WebController@page')->where('category', '[a-z,0-9-]+')->where('slug', '[a-z,0-9-]+');
 	Route::get('c/{slug}', 'WebController@category')->where('slug', '[a-z,0-9-]+');
 	Route::match(['get', 'post'], 'contact', 'WebController@contact');
     Route::get('events/{id}/vote/{rank}', ['as' => 'event.vote', 'uses' => 'EventController@vote']);
+    Route::get('posts/{id}/vote', ['as' => 'post.vote', 'uses' => 'PostController@vote']);
+    //Route::match(['get', 'post'], 'next', 'EventController@next');
+    Route::get('next/{now}', 'EventController@next');
+    Route::get('map', 'WebController@map');
+    Route::get('lastchats/{user_id}/{last}', 'ChatController@lastchats');
 
     Route::get('photos/{filename}', function ($filename)
     {
