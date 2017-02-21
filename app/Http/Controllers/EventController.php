@@ -56,17 +56,17 @@ class EventController extends Controller
     public function index(Request $request)
     {
 
-        $eventsfeb22 = Event::where('startdate', 'LIKE', '2017-02-22%')->orderBy('startdate', 'asc')->get();
-        $eventsfeb23 = Event::where('startdate', 'LIKE', '2017-02-23%')->orderBy('startdate', 'asc')->get();
-        $eventsfeb24 = Event::where('startdate', 'LIKE', '2017-02-24%')->orderBy('startdate', 'asc')->get();
-        $eventsfeb25 = Event::where('startdate', 'LIKE', '2017-05-22%')->orderBy('startdate', 'asc')->get();
-        $eventsfeb26 = Event::where('startdate', 'LIKE', '2017-06-22%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb27 = Event::where('startdate', 'LIKE', '2017-02-27%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb28 = Event::where('startdate', 'LIKE', '2017-02-28%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb01 = Event::where('startdate', 'LIKE', '2017-03-01%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb02 = Event::where('startdate', 'LIKE', '2017-03-02%')->orderBy('startdate', 'asc')->get();
+        $eventsfeb03 = Event::where('startdate', 'LIKE', '2017-03-03%')->orderBy('startdate', 'asc')->get();
 
 
         $all = Event::orderBy('startdate', 'asc')->paginate(10);
         //listado de ponentes
         $users = User::where('rol', 'Admin')->get();
-        return view('events/index', compact('users', 'eventsfeb22', 'eventsfeb23', 'eventsfeb24', 'eventsfeb25', 'eventsfeb26', 'all'));
+        return view('events/index', compact('users', 'eventsfeb27', 'eventsfeb28', 'eventsfeb01', 'eventsfeb02', 'eventsfeb03', 'all'));
     }
 
     public function store(Request $request)

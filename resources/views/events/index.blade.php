@@ -16,105 +16,28 @@
 </div>
 @if (Auth::check() && Auth::user()->rol == 'Admin')
 	<ul class="responsivetabs nav nav-tabs">
-	  <li class="active"><a href="#feb22" data-toggle="tab">Feb 22</a></li>
-	  <li><a href="#feb23" data-toggle="tab">Feb 23</a></li>
-	  <li><a href="#feb24" data-toggle="tab">Feb 24</a></li>
-	  <li><a href="#feb25" data-toggle="tab">Feb 25</a></li>
-	  <li><a href="#feb26" data-toggle="tab">Feb 26</a></li>
+	  <li class="active"><a href="#feb22" data-toggle="tab">Feb 27</a></li>
+	  <li><a href="#feb23" data-toggle="tab">Feb 28</a></li>
+	  <li><a href="#feb24" data-toggle="tab">Mar 01</a></li>
+	  <li><a href="#feb25" data-toggle="tab">Mar 02</a></li>
+	  <li><a href="#feb26" data-toggle="tab">Mar 03</a></li>
 	</ul>
 @endif
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="feb22">
-        @foreach ($eventsfeb22 as $event)
-			<div class="col-md-6">
-				<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
-					<a href="#" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
-					@if (Auth::check() && Auth::user()->rol == 'Admin')
-						<a href="/events/{{ $event->id }}/edit" class="btn btn-default pull-right"><i class="fa fa-edit"></i></a>
-					@endif
-					<?php /*<div class="countdown">Próximo evento: <span data-countdown="{{ $event->startdate }}"></span></div>*/ ?>
-					<div class="caption">
-						<h3>{{ $event->name }}</h3>
-						<?php /*<a href="/users/{{ $event->user->id }}"><h4>{{ $event->user->name }}</h4></a>*/ ?>
-						<div class="info">
-							Lugar: {{  $event->place }}<br />
-							Grupo: {{ $event->team }}<br />
-							Fecha: {{  Carbon\Carbon::parse($event->startdate)->format('l d') }} <br />
-							Hora: {{  Carbon\Carbon::parse($event->startdate)->format('H:i') }}
-						</div>
-					</div>
-				</section>
-			</div>
-		@endforeach
+        @include('partials.listevents', array('events' => $eventsfeb27))
     </div>
     <div class="tab-pane fade in" id="feb23">
-        @foreach ($eventsfeb23 as $event)
-			<div class="col-md-6">
-				<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
-					<a href="#" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
-					@if (Auth::check() && Auth::user()->rol == 'Admin')
-						<a href="/events/{{ $event->id }}/edit" class="btn btn-default pull-right"><i class="fa fa-edit"></i></a>
-					@endif
-					<?php /*<div class="countdown">Próximo evento: <span data-countdown="{{ $event->startdate }}"></span></div>*/ ?>
-					<div class="caption">
-						<h3>{{ $event->name }}</h3>
-						<?php /*<a href="/users/{{ $event->user->id }}"><h4>{{ $event->user->name }}</h4></a>*/ ?>
-						<div class="info">
-							Lugar: {{  $event->place }}<br />
-							Grupo: {{ $event->team }}<br />
-							Fecha: {{  Carbon\Carbon::parse($event->startdate)->format('l d') }} <br />
-							Hora: {{  Carbon\Carbon::parse($event->startdate)->format('H:i') }}
-						</div>
-					</div>
-				</section>
-			</div>
-		@endforeach
+        @include('partials.listevents', array('events' => $eventsfeb28))
     </div>
     <div class="tab-pane fade in" id="feb24">
-        @foreach ($eventsfeb24 as $event)
-			<div class="col-md-6">
-				<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
-					<a href="#" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
-					@if (Auth::check() && Auth::user()->rol == 'Admin')
-						<a href="/events/{{ $event->id }}/edit" class="btn btn-default pull-right"><i class="fa fa-edit"></i></a>
-					@endif
-					<?php /*<div class="countdown">Próximo evento: <span data-countdown="{{ $event->startdate }}"></span></div>*/ ?>
-					<div class="caption">
-						<h3>{{ $event->name }}</h3>
-						<?php /*<a href="/users/{{ $event->user->id }}"><h4>{{ $event->user->name }}</h4></a>*/ ?>
-						<div class="info">
-							Lugar: {{  $event->place }}<br />
-							Grupo: {{ $event->team }}<br />
-							Fecha: {{  Carbon\Carbon::parse($event->startdate)->format('l d') }} <br />
-							Hora: {{  Carbon\Carbon::parse($event->startdate)->format('H:i') }}
-						</div>
-					</div>
-				</section>
-			</div>
-		@endforeach
+        @include('partials.listevents', array('events' => $eventsfeb01))
     </div>
     <div class="tab-pane fade in" id="feb25">
-        @foreach ($eventsfeb25 as $event)
-			<div class="col-md-6">
-				<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
-					<a href="#" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
-					@if (Auth::check() && Auth::user()->rol == 'Admin')
-						<a href="/events/{{ $event->id }}/edit" class="btn btn-default pull-right"><i class="fa fa-edit"></i></a>
-					@endif
-					<?php /*<div class="countdown">Próximo evento: <span data-countdown="{{ $event->startdate }}"></span></div>*/ ?>
-					<div class="caption">
-						<h3>{{ $event->name }}</h3>
-						<?php /*<a href="/users/{{ $event->user->id }}"><h4>{{ $event->user->name }}</h4></a>*/ ?>
-						<div class="info">
-							Lugar: {{  $event->place }}<br />
-							Grupo: {{ $event->team }}<br />
-							Fecha: {{  Carbon\Carbon::parse($event->startdate)->format('l d') }} <br />
-							Hora: {{  Carbon\Carbon::parse($event->startdate)->format('H:i') }}
-						</div>
-					</div>
-				</section>
-			</div>
-		@endforeach
+        @include('partials.listevents', array('events' => $eventsfeb02))
+    </div>
+    <div class="tab-pane fade in" id="feb26">
+        @include('partials.listevents', array('events' => $eventsfeb03))
     </div>
 </div>
 {!! $all->render() !!}
