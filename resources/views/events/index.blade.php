@@ -10,11 +10,13 @@
 </div>
 
 <div class="list-group">
-@foreach($all as $event)
-	<a href="/events/{{ $event->id }}/edit" class="list-group-item">{{ $event->name }} <div class="badge">{{ $event->startdate }}</div></a>
-@endforeach
-</div>
 @if (Auth::check() && Auth::user()->rol == 'Admin')
+	@foreach($all as $event)
+		<a href="/events/{{ $event->id }}/edit" class="list-group-item">{{ $event->name }} <div class="badge">{{ $event->startdate }}</div></a>
+	@endforeach
+@endif
+</div>
+
 	<ul class="responsivetabs nav nav-tabs">
 	  <li class="active"><a href="#feb22" data-toggle="tab">Feb 27</a></li>
 	  <li><a href="#feb23" data-toggle="tab">Feb 28</a></li>
@@ -22,7 +24,6 @@
 	  <li><a href="#feb25" data-toggle="tab">Mar 02</a></li>
 	  <li><a href="#feb26" data-toggle="tab">Mar 03</a></li>
 	</ul>
-@endif
 <div id="myTabContent" class="tab-content">
     <div class="tab-pane fade in active" id="feb22">
         @include('partials.listevents', array('events' => $eventsfeb27))
