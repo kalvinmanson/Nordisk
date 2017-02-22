@@ -17,11 +17,7 @@
 	</div>
 </div>
 @foreach ($videos as $video)
-	<video class="img-responsive" poster="/img/test02.jpg" controls>
-		<source src="/video/videossac.webm" type="video/webm">
-		<source src="/video/videossac.mp4" type="video/mp4">
-		<source src="/video/videossac.ogg" type="video/ogg">
-	</video>
+	{{ $video->content }}
 @endforeach
 {!! $videos->render() !!}
 <hr>

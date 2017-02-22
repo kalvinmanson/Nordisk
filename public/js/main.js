@@ -71,12 +71,13 @@ $(document).ready(function() {
 		$('.file-lavel').addClass("btn-info");
 	});
 
-	$(".next-btn").bind("click touchstart", function(){
+	$(".next-btn").click( function(){
 		window.location.replace("/next/" + moment().format('YYYY-MM-DD HH:mm:ss'));
 	});
 
 	if($("#chatbox").length > 0) {
-		function actualizachat(todo=0) {
+		function actualizachat(todo) {
+			var todo = todo || 0;
 			var user_on = $("#user_on");
 			if(todo == 1) {
 				var url2get = "/chats/" + user_on.val() + "/edit";

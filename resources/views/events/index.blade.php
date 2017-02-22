@@ -14,6 +14,7 @@
 	@foreach($all as $event)
 		<a href="/events/{{ $event->id }}/edit" class="list-group-item">{{ $event->name }} <div class="badge">{{ $event->startdate }}</div></a>
 	@endforeach
+	{!! $all->render() !!}
 @endif
 </div>
 
@@ -41,7 +42,6 @@
         @include('partials.listevents', array('events' => $eventsfeb03))
     </div>
 </div>
-{!! $all->render() !!}
 
 <div class="add_form" id="add_form" style="display: none;">
 	<form method="POST" action="{{ url('events') }}">

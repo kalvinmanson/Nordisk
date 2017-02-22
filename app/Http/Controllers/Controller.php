@@ -13,6 +13,8 @@ abstract class Controller extends BaseController
 {
     use DispatchesJobs, ValidatesRequests;
 
+    
+
     public function __construct() {
 
         $global_links = Link::where('parent_id', 0)
@@ -22,6 +24,7 @@ abstract class Controller extends BaseController
         })
         ->orderBy('orden', 'asc')->get();
 
+        \Carbon\Carbon::setLocale('es');
 
         view()->share('country', $this::country());
         view()->share('global_links', $global_links);

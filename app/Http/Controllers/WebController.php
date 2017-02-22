@@ -22,7 +22,7 @@ class WebController extends Controller
     public function index()
     {
         $posts = Page::where('category_id', 1)->orderBy('created_at', 'desc')->paginate(6);
-        $videos = Page::where('category_id', 3)->orderBy('created_at', 'desc')->paginate(1);
+        $videos = Page::where('category_id', 2)->orderBy('created_at', 'desc')->paginate(1);
         return view('web/index', compact('posts', 'videos'));
     }
     //Show Map

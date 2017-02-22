@@ -1,3 +1,4 @@
+<?php $i=1; ?>
 @foreach ($events as $event)
 	<div class="col-md-6">
 		<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
@@ -18,4 +19,10 @@
 			</div>
 		</section>
 	</div>
+	@if ($i == 2)
+		<div class="clearfix"></div>
+		<?php $i =1; ?>
+	@else
+		<?php $i = 2; ?>
+	@endif
 @endforeach
