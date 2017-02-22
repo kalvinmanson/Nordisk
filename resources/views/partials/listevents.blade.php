@@ -2,7 +2,7 @@
 @foreach ($events as $event)
 	<div class="col-md-6">
 		<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
-			<a href="#" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
+			<a href="/calendar.ics" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
 			@if (Auth::check() && Auth::user()->rol == 'Admin')
 				<a href="/events/{{ $event->id }}/edit" class="btn btn-default pull-right"><i class="fa fa-edit"></i></a>
 			@endif
