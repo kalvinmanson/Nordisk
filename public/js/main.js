@@ -71,7 +71,7 @@ $(document).ready(function() {
 		$('.file-lavel').addClass("btn-info");
 	});
 
-	$(".next-btn").click( function() {
+	$(".next-btn").bind("click touchstart", function(){
 		window.location.replace("/next/" + moment().format('YYYY-MM-DD HH:mm:ss'));
 	});
 
@@ -177,43 +177,6 @@ $(document).ready(function() {
 		$(this).hide();
 	}); 
 
-
-	/* MAPA PÉRTO VALLARTA */
-	if($("#canvas").length > 0) {
-		var canvas, stage, exportRoot;
-		function init() {
-			// --- write your JS code here ---
-			
-			canvas = document.getElementById("canvas");
-			images = images||{};
-
-			var loader = new createjs.LoadQueue(false);
-			loader.addEventListener("fileload", handleFileLoad);
-			loader.addEventListener("complete", handleComplete);
-			loader.loadManifest(lib.properties.manifest);
-		}
-
-		function handleFileLoad(evt) {
-			if (evt.item.type == "image") { images[evt.item.id] = evt.result; }
-		}
-
-		function handleComplete(evt) {
-			exportRoot = new lib.norva();
-
-			stage = new createjs.Stage(canvas);
-			stage.addChild(exportRoot);
-			stage.update();
-			stage.enableMouseOver();
-
-			createjs.Ticker.setFPS(lib.properties.fps);
-			createjs.Ticker.addEventListener("tick", stage);
-		}
-
-		function puntos(e) {
-
-		}
-		var nuevocanvas = init();
-	}
 
 	$('.responsivetabs').tabCollapse();
 
