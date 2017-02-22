@@ -17,7 +17,7 @@
 	</div>
 </div>
 @foreach ($videos as $video)
-	{{ $video->content }}
+	{!! $video->content !!}
 @endforeach
 {!! $videos->render() !!}
 <hr>
