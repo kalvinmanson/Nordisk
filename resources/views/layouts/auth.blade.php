@@ -2,9 +2,7 @@
 <html lang="es">
 <head>
 	<meta charset="utf-8">
-	<title>Drodmin - @yield('title')</title>
-	<meta name="keywords" content="@yield('meta-keywords')">
-    <meta name="description" content="@yield('meta-keywords')">
+	<title>Liderando Juntos</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1">
 

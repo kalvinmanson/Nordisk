@@ -1,4 +1,3 @@
-<?php $i=1; ?>
 @foreach ($events as $event)
 	<section class="event" style="background-image: url(/photos/{{ $event->picture }})">
 		<a href="/calendar.ics" class="btn btn-info"><i class="fa fa-calendar-o"></i> Agendar.</a>
