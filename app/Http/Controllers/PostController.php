@@ -32,6 +32,27 @@ class PostController extends Controller
         $votes = Vote::where('post_id', $post->id)->get()->count();
         return $votes;
     }
+    public function rotate($id, $direction) {
+        $post = Post::find($id);
+        $current_user = Auth::user();
+        if($post->user_id == $current_user->id || $current_user->rol == "Admin") {
+            $img = Image::make(base_path().'/storage/app/'.$post->picture);
+            if($direction == "l") {
+                $img->rotate(90);
+            } else {
+                $img->rotate(-90);
+            }
+            $img->save();
+            //redireccion
+            flash('Foto girada', 'success');
+            return redirect('posts/#post-'.$post->id);
+        } else {
+            //redireccion
+            flash('No tienes permiso para girar esta foto', 'danger');
+            return redirect()->action('PostController@index');
+        }
+        
+    }
     /**
      * Display a listing of the resource.
      *

@@ -21,18 +21,24 @@
 		
 	</form>
 </div>
-
+<?php $current_user = Auth::user(); ?>
 @foreach ($posts as $post)
 	<input type="hidden" value="{{ csrf_token() }}" id="token">
 	<section class="post">
 		<blockquote>
+			<a name="post-{{ $post->id }}"></a>
 			@if($post->picture)
 				<img src="/photos/{{ $post->picture }}" class="img-responsive">
+				@if($current_user->id == $post->user->id || $current_user->rol == "Admin")
+					<div class="rotar">
+						<a href="/posts/{{ $post->id}}/rotate/r" class="btn btn-default pull-right"><i class="fa fa-repeat"></i></a>
+						<a href="/posts/{{ $post->id}}/rotate/l" class="btn btn-default"><i class="fa fa-undo"></i></a>
+					</div>
+				@endif
 				<hr>
 			@endif
 			<p>{{ $post->name }}</p>
 			<?php 
-				$current_user = Auth::user();
 		        $vote = App\Vote::where('post_id', $post->id)->where('user_id', $current_user->id)->first(); 
 		    ?>
 		    @if($current_user->id == $post->user->id || $current_user->rol == "Admin")
