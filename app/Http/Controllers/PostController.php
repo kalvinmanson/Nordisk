@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\User;
 use App\Vote;
+use App\Comment;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -131,6 +132,11 @@ class PostController extends Controller
         $current_user = Auth::user();
         $post = Post::find($id);
         if($current_user->id == $post->user->id || $current_user->rol == "Admin") {
+            
+            //borra comentarios
+            Comment::where('post_id', $post->id)->delete();
+            Vote::where('post_id', $post->id)->delete();
+
             Post::destroy($post->id);
             flash('Mensaje borrado', 'success');
         } else {
