@@ -29,7 +29,7 @@
 		<blockquote class="bordeverde">
 			<div class="badge pull-right">{{ \Carbon\Carbon::createFromTimeStamp(strtotime($post->created_at))->diffForHumans() }}</div>
 			<h3>{{ $post->name }}</h3>
-			{!! $post->content !!}
+			{!! nl2br($post->content) !!}
 		</blockquote>
 	</section>
 @endforeach
