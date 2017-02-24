@@ -173,7 +173,7 @@ $(document).ready(function() {
 	});
 	//ver mas comentarios
 	$(".btnesconde").click( function() {
-		var id = $(".btnesconde").data('id');
+		var id = $(this).data('id');
 		$("#commentlist-" + id).addClass('autoh');
 		$(this).hide();
 	}); 
