@@ -37,6 +37,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::match(['get', 'post'], 'contact', 'WebController@contact');
     Route::get('events/{id}/vote/{rank}', ['as' => 'event.vote', 'uses' => 'EventController@vote']);
     Route::get('posts/{id}/vote', ['as' => 'post.vote', 'uses' => 'PostController@vote']);
+    Route::get('posts/{id}/rotate/{direction}', ['as' => 'post.rotate', 'uses' => 'PostController@rotate']);
     //Route::match(['get', 'post'], 'next', 'EventController@next');
     Route::get('next/{now}', 'EventController@next');
     Route::get('map', 'WebController@map');

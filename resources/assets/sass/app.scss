@@ -723,3 +723,10 @@ a:hover { text-decoration: none; }
 	width:24%;
 	padding: 10px;
 }
+.rotar {
+	display: block;
+	position: relative;
+	padding: 0 4px;
+	margin-top: -40px;
+	z-index: 2;
+}
