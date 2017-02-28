@@ -20,7 +20,7 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $chats = Chat::groupBy('user_id')->orderBy('created_at', 'desc')->get();
+        $chats = Chat::where('read_admin', false)->groupBy('user_id')->orderBy('created_at', 'desc')->get();
         return view('chats.index', compact('chats'));
     }
 
@@ -28,17 +28,54 @@ class ChatController extends Controller
     {
         $current_user = Auth::user();
         $chats = Chat::where('user_on', $current_user->id)->where('id', '>', $id)->get();
+        // marcar leido
+        foreach($chats as $chat) {
+            if($current_user->id == $user_id && $chat->read_user == false) {
+                $chat->read_user = true;
+                $chat->save();
+            }
+            if($current_user->rol == "Admin" && $chat->read_admin == false) {
+                $chat->read_admin = true;
+                $chat->save();
+            }
+        }
         return $chats->load('user')->toJson();
     }
     public function lastchats($user_id, $last)
     {
         $current_user = Auth::user();
         $chats = Chat::where('user_on', $user_id)->where('id', '>', $last)->get();
+
+        // marcar leido
+        foreach($chats as $chat) {
+            if($current_user->id == $user_id && $chat->read_user == false) {
+                $chat->read_user = true;
+                $chat->save();
+            }
+            if($current_user->rol == "Admin" && $chat->read_admin == false) {
+                $chat->read_admin = true;
+                $chat->save();
+            }
+        }
+
         return $chats->load('user')->toJson();
     }
     public function edit($id)
     {
+        $current_user = Auth::user();
         $chats = Chat::where('user_on', $id)->get();
+        // marcar leido
+        foreach($chats as $chat) {
+            if($current_user->id == $id && $chat->read_user == false) {
+                $chat->read_user = true;
+                $chat->save();
+            }
+            if($current_user->rol == "Admin" && $chat->read_admin == false) {
+                $chat->read_admin = true;
+                $chat->save();
+            }
+        }
+
         return $chats->load('user')->toJson();
     }
     public function store(Request $request)

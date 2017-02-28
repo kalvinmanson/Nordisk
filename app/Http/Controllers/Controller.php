@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use App\Menu;
 use App\Link;
+use App\Chat;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -26,6 +27,20 @@ abstract class Controller extends BaseController
 
         \Carbon\Carbon::setLocale('es');
 
+
+        //registrar ultimo chat
+        
+        if(Auth::check()) {
+            $current_user = Auth::user();
+            if($current_user->rol == "Admin") {
+                $new_chats = Chat::where('read_admin', false)->count();
+            } else {
+                $new_chats = Chat::where('user_id', $current_user->id)->where('read_user', false)->count();
+            }
+        } else {
+            $new_chats = 0;
+        }
+        view()->share('new_chats', $new_chats);
         view()->share('country', $this::country());
         view()->share('global_links', $global_links);
     }

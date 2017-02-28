@@ -61,9 +61,9 @@ class PostController extends Controller
     public function index()
     {
         if(isset($request->q)) {
-            $posts = Post::where('name', 'LIKE', '%'.$request->q.'%')->orWhere('content', 'LIKE', '%'.$request->q.'%')->orderBy('created_at', 'desc')->paginate(100);
+            $posts = Post::where('name', 'LIKE', '%'.$request->q.'%')->orWhere('content', 'LIKE', '%'.$request->q.'%')->orderBy('created_at', 'desc')->paginate(30);
         } else {
-            $posts = Post::orderBy('created_at', 'desc')->paginate(100);
+            $posts = Post::orderBy('created_at', 'desc')->paginate(30);
         }
         return view('posts.index', compact('posts'));
     }
@@ -78,11 +78,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $current_user = Auth::user();
-        /*
-        $this->validate(request(), [
-            'name' => ['required', 'min:30']
-        ]);*/
-
+        
         // subir imagen
         if ($request->hasFile('avatar') && $request->file('avatar')->isValid()) {
             
@@ -95,6 +91,10 @@ class PostController extends Controller
             $img = Image::make($request->file('avatar')->getRealPath());
             $img->widen(900);
             Storage::disk('local')->put($filename,  $img->stream());
+        } else {
+            $this->validate(request(), [
+                'name' => ['required', 'min:10']
+            ]);
         }
 
         $record_store = request()->all();

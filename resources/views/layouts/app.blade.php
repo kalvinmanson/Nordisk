@@ -34,6 +34,7 @@
     {!! Html::style('css/bootstrap-datepicker.min.css') !!}
     {!! Html::style('css/bootstrap-datetimepicker.min.css') !!}
     {!! Html::style('css/ratings.css') !!}
+    {!! Html::style('css/select2.min.css') !!}
     
     {!! Html::style('css/app.css') !!}
     @if (Auth::check() && Auth::user()->rol == 'Admin')
@@ -61,7 +62,9 @@
     <div class="navbar-header">
     <div class="username">
     	{{ Auth::user()->name }}
-    	<span><a href="#" class="btn btn-danger btn-xs"><i class="fa fa-comments"></i></a></span>
+    	@if($new_chats > 0)
+    		<span><a href="/chats" class="btn btn-danger btn-xs"><i class="fa fa-comments"></i> {{ $new_chats }}</a></span>
+    	@endif
     </div>
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
         <span class="sr-only">Toggle navigation</span>
@@ -111,6 +114,9 @@
 						<div class="row">
 							<div class="col-xs-3">
 								<a href="/" class="btn btn-lg bigicon pull-left"><i class="fa fa-home"></i></a>
+								@if($new_chats > 0)
+						    		<a href="/chats" class="btn btn-danger btn-xs pull-left"><i class="fa fa-comments"></i> {{ $new_chats }}</a>
+						    	@endif
 							</div>
 							<div class="col-xs-6">
 								@if(Request::path() != "/")
@@ -153,6 +159,7 @@
 	{!! Html::script('js/jquery.countdown.min.js') !!}
 	{!! Html::script('js/jquery.star-rating-svg.min.js') !!}
 	{!! Html::script('js/bootstrap-tabcollapse.js') !!}
+	{!! Html::script('js/select2.full.min.js') !!}
 	{!! Html::script('js/main.js') !!}
 </body>
 </html>

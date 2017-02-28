@@ -7,7 +7,7 @@
 </div>
 
 <div class="add_form" id="add_form">
-	<form method="POST" action="{{ url('posts') }}" enctype="multipart/form-data">
+	<form method="POST" action="{{ url('posts') }}" enctype="multipart/form-data" id="new_post">
 		<div class="form-group">
 			<textarea name="name" id="name" class="form-control input-lg">{{ old('name') }}</textarea>
 		</div>
@@ -17,7 +17,7 @@
 			<input type="file" name="avatar" id="avatar" accept="image/*" style="display: none;">
 		</label>
 		
-		<button type="submit" class="btn btn-primary pull-right">Enviar</button>
+		<button type="submit" class="btn btn-primary pull-right tr_autodestroy" data-form="new_post">Enviar</button>
 		
 	</form>
 </div>
@@ -89,6 +89,8 @@
 		
 	</section>
 @endforeach
+
+{!! $posts->render() !!}
 
 
 

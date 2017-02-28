@@ -9,7 +9,7 @@
 @if (Auth::check() && Auth::user()->rol == 'Admin')
 	<div class="form-group">
 		<label for="user_id">Chats recientes</label>
-		<select id="cambiarusuarios" class="form-control">
+		<select id="cambiarusuarios" class="form-control findselect">
 				<option value="0">Seleccionar usuario</option>
 			@foreach($chats as $chat)
 				<option value="{{ $chat->user->id }}">{{ $chat->user->name }}</option> 

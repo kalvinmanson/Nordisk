@@ -5,6 +5,14 @@ $(document).ready(function() {
 	    return (str + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1' + breakTag + '$2');
 	}
 
+	$(".findselect").select2();
+
+	$(".tr_autodestroy").mouseup( function () {
+		$(this).remove();
+		var form = $(this).data('form');
+		$("#"+form).submit();
+	})
+
 	var token = $('#token').val();
 	$(".fancyb").fancybox();
 	$(".fancya").fancybox({
@@ -84,6 +92,7 @@ $(document).ready(function() {
 			} else {
 				var url2get = "/lastchats/" + user_on.val() + "/" + $("#last").val();
 			}
+			console.log(url2get);
 			$.getJSON( url2get, function( data ) {
 			var last = 0;
 			  var items = [];
